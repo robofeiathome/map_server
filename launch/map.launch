@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- resource: path to map and locals folder  -->
+  <!-- <arg name="map_resource" default=""/> -->
+  <arg name="map_resource" default=""/>
+
+  <!-- load map -->
+  <node name="map_server" pkg="map_server" type="map_server"
+    args="$(arg map_resource)/map.yaml"/>
+
+  <!-- load locals -->
+  <param name="locals_file" type="string"
+    value="$(arg map_resource)/locals.yaml" />
+
+  <!-- start node -->
+  <node name="map" pkg="map" type="map_node.py" />
+
+</launch>

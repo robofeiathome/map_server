@@ -1,1 +1,1 @@
-# map_server
+map

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- resource: path to map and locals files  -->
+  <arg name="resource" default=""/>
+  
+  <!-- rviz -->
+  <node args="-d $(find map)/config/save_locals.rviz" name="rviz" pkg="rviz" type="rviz" respawn="true"/>
+
+  <!-- load map -->
+  <node args="$(arg resource)/map.yaml" name="map_server" output="screen" pkg="map_server" type="map_server" />
+
+  <!-- load locals file-->
+  <param name="locals_file" type="string" value="$(arg resource)/locals.yaml" />
+
+  <!-- start node -->
+  <node name="map" pkg="map" type="save_locals.py" output="screen" />
+
+</launch>
