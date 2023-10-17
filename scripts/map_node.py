@@ -22,7 +22,7 @@ class Map:
         rospy.Service('/map/save_local', SaveLocal, self.handle_start)
 
         fname = rospy.get_param("locals_file")
-
+        
 
         while not rospy.is_shutdown():
             self.load_locals(fname)
